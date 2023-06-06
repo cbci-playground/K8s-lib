@@ -7,10 +7,10 @@ operationCenter:
   subdomain: "ci"
   ingress:
     # -- alb or nlb
-    class: alb
+    class: nlb
   casc:
     # -- Location of CloudBees Bundle Storage for Controller
-    controllerBundleStorageSCM: "https://github.com/carlosrodlop/cb-casc-controllers.git"
+    controllerBundleStorageSCM: "https://github.com/cbci-playground/cb-casc-controllers.git"
   credentials:
     # -- Github Secret pair
     github:
@@ -26,7 +26,7 @@ controllers:
   policies: false
   loadTest:
     # -- Number of Load Controllers for Performance Testing
-    controllers: 0
+    controllers: 1
 agents:
   # -- Agents Namespace name
   namespace: "cbci-agents"

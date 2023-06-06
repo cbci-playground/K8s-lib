@@ -1,3 +1,12 @@
+# Install
+
+```
+#kubens <cloudbees-core-ns>
+helm install stresstest ./   -f myvalues.yaml
+helm upgrade -i  stresstest ./   -f myvalues.yaml  --debug --dry-run
+ kctl get cm oc-casc-bundle  -o yaml
+```
+
 # cb-ci-local
 
 ![Version: 0.2.0](https://img.shields.io/badge/Version-0.2.0-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square)

@@ -33,12 +33,12 @@ data:
                   remote: {{ .Values.operationCenter.casc.controllerBundleStorageSCM | quote }}
                   traits:
                     - "gitBranchDiscovery"
-  credentials.yaml: |-
-{{ .Files.Get "casc/oc/modern/credentials.yaml" | indent 4 }}
   security.yaml: |-
 {{ .Files.Get "casc/oc/modern/security.yaml" | indent 4 }}
   plugins.yaml: |-
 {{ .Files.Get "casc/oc/modern/plugins.yaml" | indent 4 }}
+  plugin-catalog.yaml: |-
+{{ .Files.Get "casc/oc/modern/plugin-catalog.yaml" | indent 4 }}
   items-folder-admin.yaml: |-
 {{ .Files.Get "casc/oc/modern/items-folder-admin.yaml" | indent 4 }}
   items-root.yaml: |-
@@ -65,5 +65,3 @@ data:
 {{- else }}
     items: []
 {{- end }}
-  rbac.yaml: |-
-{{ .Files.Get "casc/oc/modern/rbac.yaml" | indent 4 }}
