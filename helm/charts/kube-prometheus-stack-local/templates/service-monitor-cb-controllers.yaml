@@ -1,17 +1,44 @@
+---
 apiVersion: monitoring.coreos.com/v1
 kind: ServiceMonitor
 metadata:
-  name: service-monitor-controllers-cbci
+  name: service-monitor-controllers-cbci-good-boy
   labels:
     app: service-monitor-controllers-cbci
 spec:
   namespaceSelector:
     matchNames:
-      - cbci
+      - cloudbees-core
+  selector:
+    matchLabels:
+      com.cloudbees.cje.type: master
+      com.cloudbees.cje.tenant: good-boy
+  endpoints:
+    - port: http
+      interval: 30s
+      path: good-boy/prometheus/
+{{- if gt (int .Values.controllers.loadTest.controllers) 0 }}
+{{- range (untilStep 0 (int .Values.controllers.loadTest.controllers) 1) }}
+---
+apiVersion: monitoring.coreos.com/v1
+kind: ServiceMonitor
+metadata:
+  name: service-monitor-controllers-cbci-load-boy{{ . }}
+  labels:
+    app: service-monitor-controllers-cbci
+spec:
+  namespaceSelector:
+    matchNames:
+      - cloudbees-core
   selector:
     matchLabels:
       com.cloudbees.cje.type: master
   endpoints:
     - port: http
       interval: 30s
-      path: /prometheus/
+      path: load-boy{{ . }}/prometheus/
+{{- end }}
+{{- end }}
+
+
+

@@ -1,3 +1,10 @@
+# Install prometheus stack
+```
+
+ helm upgrade -i  prometheus-stack prometheus-community/kube-prometheus-stack  -f helm/values/aws-tf-blueprints/kube-prometheus-stack.yaml
+ cd /tmp && helm pull  prometheus-stack prometheus-community/kube-prometheus-stack   --untar
+```
+
 # Kubernetes Library
 
 <p align="center">

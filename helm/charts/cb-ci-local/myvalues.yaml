@@ -1,0 +1,39 @@
+operationCenter:
+  # -- http or https
+  protocol: "https"
+  # -- DNS zone (Eg: Route 53 in Hosted Zone in AWS)
+  hostname: "sda.acaternberg.flow-training.beescloud.com"
+  # -- Subdomain prefix used for all CloudBees CI applications (Operation Center and Controllers)
+  subdomain: ""
+  ingress:
+    # -- alb or nlb
+    class: nlb
+  casc:
+    # -- Location of CloudBees Bundle Storage for Controller
+    controllerBundleStorageSCM: "https://github.com/cbci-playground/cb-casc-controllers.git"
+  credentials:
+    # -- Github Secret pair
+    github:
+      # -- Github Secret for token
+      token: "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"
+      # -- Github Secret for user
+      user: "cccaternberg"
+    jenkins:
+      # -- Jenkins password
+      pass: "admin"
+controllers:
+  # -- Enable Limit Range and Resource Quoatas
+  policies: false
+  loadTest:
+    # -- Number of Load Controllers for Performance Testing
+    controllers: 2
+agents:
+  # -- Agents Namespace name
+  namespace: "test"
+  # -- Enable Limit Range and Resource Quoatas
+  policies: false
+  cache:
+    # -- Cache for builds artifacts
+    enable: false
+    # -- Storage Class Name for PVC. Empty string will take the default one
+    storageClassName: ""

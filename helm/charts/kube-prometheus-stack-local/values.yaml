@@ -1,4 +1,9 @@
 grafana:
   dashboard:
     # -- Configmap for defining CloudBees CI Controllers
-    cbciControllersConfigmap: false
+    cbciControllersConfigmap: true
+controllers:
+  loadTest:
+    prefix: load-boy
+    # -- Number of Load Controllers for Performance Testing
+    controllers: 2

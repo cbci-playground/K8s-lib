@@ -1,3 +1,16 @@
+# Install
+
+```
+ helm upgrade -i  custom-cb-service-monitor -m <NS>  ./   -f values.yaml  --debug
+```
+
+# Reset Grafan PW
+
+```
+kubectl exec  -it  $(kubectl get pods  -l "app.kubernetes.io/name=grafana" -o jsonpath="{.items[0].metadata.name}") -c grafana   -- grafana-cli admin reset-admin-password admin\n
+kubectl delete pod   $(kubectl get pods  -l "app.kubernetes.io/name=grafana" -o jsonpath="{.items[0].metadata.name}") 
+```
+
 # kube-prometheus-stack-local
 
 ![Version: 0.2.0](https://img.shields.io/badge/Version-0.2.0-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square)

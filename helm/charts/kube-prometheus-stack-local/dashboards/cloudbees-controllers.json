@@ -210,7 +210,7 @@
                 "type": "prometheus",
                 "uid": "prometheus"
               },
-              "expr": "http_responseCodes_serverError_total{kubernetes_namespace=~\"$namespace\", app_kubernetes_io_instance=~\"$instance\"}",
+              "expr": "http_responseCodes_serverError_total{kubernetes_namespace=~\"$namespace\", app_kubernetes_io_instance=~\"$instance\"}[\"$__rate_interval\"])",
               "format": "time_series",
               "intervalFactor": 1,
               "legendFormat": "{{app_kubernetes_io_instance}}",
@@ -2527,7 +2527,7 @@
         "name": "instance",
         "options": [],
         "query": {
-          "query": "label_values(jenkins_health_check_duration, app_kubernetes_io_instance)",
+          "query": "label_values(jenkins_health_check_duration, com.cloudbees.cje.type=master)",
           "refId": "Prometheus-instance-Variable-Query"
         },
         "refresh": 2,

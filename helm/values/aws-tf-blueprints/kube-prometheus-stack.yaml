@@ -29,15 +29,16 @@ prometheusOperator:
     kubernetes.io/arch: amd64
 prometheus:
   prometheusSpec:
+    serviceMonitorSelectorNilUsesHelmValues: true
     nodeSelector:
       kubernetes.io/os: linux
       kubernetes.io/arch: amd64
     additionalScrapeConfigs:
       - job_name: "cjoc"
-        metrics_path: "/prometheus/"
+        metrics_path: "cjoc/prometheus/"
         static_configs:
           - targets:
-              ["cjoc.cbci.svc.cluster.local:80"]
+              ["cjoc.cloudbees-core.svc.cluster.local:80"]
     #https://observability.thomasriley.co.uk/prometheus/configuring-prometheus/using-service-monitors/
     serviceMonitorSelector:
         matchLabels:

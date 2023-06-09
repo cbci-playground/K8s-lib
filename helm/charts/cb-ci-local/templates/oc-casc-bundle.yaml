@@ -54,7 +54,7 @@ data:
       name: load-boy{{ . }}
       properties:
       - configurationAsCode:
-          bundle: "modern.load-boy"
+          bundle: main/modern.load-boy
       configuration:
         kubernetes:
           domain: load-boy{{ . }}
@@ -65,3 +65,5 @@ data:
 {{- else }}
     items: []
 {{- end }}
+  rbac.yaml: |-
+{{ .Files.Get "casc/oc/modern/rbac.yaml" | indent 4 }}

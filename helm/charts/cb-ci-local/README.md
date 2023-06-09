@@ -1,10 +1,9 @@
 # Install
 
 ```
-#kubens <cloudbees-core-ns>
-helm install stresstest ./   -f myvalues.yaml
+#kubens <mon>
 helm upgrade -i  stresstest ./   -f myvalues.yaml  --debug --dry-run
- kctl get cm oc-casc-bundle  -o yaml
+kctl get cm oc-casc-bundle  -o yaml
 ```
 
 # cb-ci-local
